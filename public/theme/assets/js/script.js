@@ -6,12 +6,11 @@ Version      : 1.3
 
 (function ($) {
 	"use strict";
-
 	// Stick Sidebar
 
 	if ($(window).width() > 767) {
-		if ($('.theiaStickySidebar').length > 0) {
-			$('.theiaStickySidebar').theiaStickySidebar({
+		if ($('.theaStickySidebar').length > 0) {
+			$('.theaStickySidebar').theaStickySidebar({
 				// Settings
 				additionalMarginTop: 30
 			});
