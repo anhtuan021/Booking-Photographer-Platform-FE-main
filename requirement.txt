@@ -1,0 +1,125 @@
+Booking Platform (photographers) — Scope & Requirements1) TÓM TẮT VÀ MỤC TIÊU
+Goal: Xây dựng nền tảng kết nối khách hàng ↔ nhiếp ảnh gia với 2 phase:
+
+MVP (Phase 1): 
+Hoàn thiện luồng cơ bản: tìm kiếm → đặt lịch → xác nhận → chụp → đánh giá. 
+Có AI gợi ý cơ bản và chatbot hỗ trợ.
+
+
+Phase 2: Mở rộng tính năng thanh toán, hủy/hoàn tiền, lịch nâng cao, báo cáo, phân quyền, AI nâng cao.
+Nguyên tắc
+MVP tập trung “đi hết 1 luồng” end‑to‑end.
+
+
+Phase 2 bổ sung các tính năng thương mại & quản trị.
+2) PHẠM VI DỰ ÁN2.1. MVP (Phase 1)Khách hàng
+1.	Đăng ký / đăng nhập (email + social login cơ bản).
+2.	Tìm kiếm nhiếp ảnh gia: lọc theo khu vực, thể loại, giá.
+3.	Xem hồ sơ nhiếp ảnh gia: portfolio ảnh, giới thiệu, giá dịch vụ.
+4.	Đặt lịch: chọn ngày, gói dịch vụ → gửi yêu cầu booking.
+5.	Quản lý booking: xem trạng thái (Pending, Confirmed, Done, Cancelled).
+6.	Đánh giá sau khi hoàn tất: rating + comment (qua duyệt).
+Nhiếp ảnh gia
+1.	Đăng ký tài khoản & tạo portfolio (upload ảnh, giới thiệu, giá dịch vụ).
+2.	Quản lý booking: xác nhận / từ chối yêu cầu.
+3.	Quản lý lịch trống cơ bản (danh sách ngày bận).
+Admin
+1.	Duyệt hồ sơ nhiếp ảnh gia trước khi public.
+2.	Quản lý người dùng & booking.
+3.	Kiểm soát nội dung (portfolio, review).
+AI (MVP)
+1.	AI gợi ý nhiếp ảnh gia: dựa trên nhu cầu khách (budget, location, thể loại, thời gian).
+2.	AI chatbot hỗ trợ: trả lời FAQ (giá, quy trình, thời gian), hướng dẫn khách đặt lịch.
+Non-Functional (MVP)
+1.	Responsive mobile-first.
+2.	Hiệu năng: tìm kiếm < 2s, booking < 3s.
+3.	Bảo mật cơ bản: xác thực email/phone, chống spam.
+4.	Notification: email cho booking (tạo, xác nhận, nhắc lịch).
+2.2. Phase 2 (Mở rộng)Khách hàng
+1.	Thanh toán online: tích hợp VNPay/MoMo/Stripe.
+2.	Hủy / đổi lịch: workflow hủy, chính sách hoàn tiền.
+3.	Thông báo real-time (push/in-app notification).
+Nhiếp ảnh gia
+1.	Lịch trống nâng cao: dạng calendar, slot theo giờ.
+2.	Quản lý giá & gói dịch vụ nâng cao (add-on: makeup, drone,…).
+3.	Doanh thu & báo cáo: tổng số booking, doanh thu.
+Admin
+1.	Phân quyền: super admin, CS staff.
+2.	Dashboard: KPI số booking/ngày, doanh thu, hoạt động photographer.
+3.	Flag & Report: user có thể report ảnh/review, admin xử lý.
+AI (Phase 2)
+1.	AI gợi ý concept/location chụp theo mô tả khách.
+2.	AI Review Analyzer: tóm tắt điểm mạnh/yếu của photographer từ review.
+3.	AI Content Suggestion: gợi ý caption/hashtag cho photographer.
+Non-Functional (Phase 2)
+1.	Bảo mật nâng cao: thanh toán an toàn (PCI DSS), mã hóa dữ liệu nhạy cảm.
+2.	Khả năng mở rộng: microservices hoặc modular.
+3.	Khả dụng: uptime ≥ 99.9%, backup & DRP.
+3) USER STORIES & ACCEPTANCE CRITERIA (MVP)Khách hàng
+US-01: Là khách, tôi muốn đăng ký/đăng nhập để sử dụng dịch vụ.
+AC: Đăng ký bằng email + password; đăng nhập Google/Facebook; validate email.
+US-02: Tôi muốn tìm kiếm nhiếp ảnh gia phù hợp.
+AC: Lọc theo location, thể loại, giá; kết quả phân trang; hiển thị ảnh đại diện, tên, rating, giá.
+US-03: Tôi muốn xem hồ sơ photographer.
+AC: Hiển thị portfolio ảnh, giới thiệu, giá dịch vụ, review.
+US-04: Tôi muốn đặt lịch.
+AC: Form chọn ngày, gói; validate ngày trống; gửi yêu cầu → booking ở trạng thái Pending.
+US-05: Tôi muốn quản lý booking.
+AC: Trang “My Bookings” hiển thị booking theo trạng thái; có nút cancel (Pending) → trạng thái Cancelled.
+US-06: Tôi muốn đánh giá photographer.
+AC: Rating 1–5 sao + comment; review pending admin duyệt.
+Nhiếp ảnh gia
+US-07: Là photographer, tôi muốn đăng ký & tạo portfolio.
+AC: Form đăng ký; trang tạo portfolio (upload ≤ 20 ảnh, text giới thiệu, giá dịch vụ).
+US-08: Tôi muốn quản lý booking.
+AC: Trang “Bookings” hiển thị danh sách; nút Accept/Reject; khi Accept → notify khách.
+US-09: Tôi muốn cập nhật lịch trống.
+AC: Bảng ngày bận; khách không thể đặt vào ngày đó.
+Admin
+US-10: Là admin, tôi muốn duyệt hồ sơ photographer.
+AC: Trang “Pending Photographers” → Approve/Reject; khi approve → public profile.
+US-11: Tôi muốn quản lý booking & user.
+AC: Bảng booking & user; filter, search.
+US-12: Tôi muốn kiểm soát nội dung.
+AC: Danh sách review, ảnh; nút Approve/Reject; report hiển thị.
+AI
+US-13: Là khách, tôi muốn AI gợi ý photographer phù hợp.
+AC: Form nhập nhu cầu (budget, location, thể loại, date) → API trả về danh sách gợi ý.
+US-14: Tôi muốn chatbot hỗ trợ đặt lịch.
+AC: Chatbot trả lời FAQ (giá, quy trình, thời gian) và đưa link đến form booking.
+4) MOSCOW BACKLOG
+Must Have (MVP)
+Đăng ký/đăng nhập.
+Search & filter photographer.
+Portfolio & profile photographer.
+Booking flow (Pending → Confirmed/Rejected → Done).
+Review & rating.
+Admin duyệt hồ sơ & kiểm soát nội dung.
+AI gợi ý photographer cơ bản.
+Chatbot FAQ.
+Notification email.
+Should Have (MVP)
+Social login.
+Cancel booking (Pending).
+Could Have (Phase 2)
+Calendar nâng cao, slot theo giờ.
+Thanh toán online, hoàn tiền.
+Báo cáo doanh thu.
+Push notification.
+Dashboard admin.
+AI concept/location, AI review analyzer.
+Won’t Have (ngoài Phase 2)
+Tích hợp vận chuyển/ship ảnh.
+Quản lý hợp đồng/pháp lý.
+5) RỦI RO & GIẢI PHÁP
+Thiếu dữ liệu portfolio → seed ảnh mẫu, yêu cầu photographer upload.
+Spam user/booking → xác thực email/phone, captcha.
+Double booking → validate lịch trống khi đặt.
+AI gợi ý không chính xác → dùng rule-based trước, ML sau khi có data.
+Thanh toán & refund phức tạp → đưa vào Phase 2.
+6) TIÊU CHÍ NGHIỆM THU
+MVP: Khách có thể tìm kiếm → đặt lịch → photographer xác nhận → đánh giá thành công.
+AI gợi ý hoạt động với input cơ bản (budget, location, type, date).
+Chatbot trả lời ≥ 10 FAQ cơ bản.
+Admin có thể duyệt hồ sơ và kiểm duyệt review.
+Phase 2: Thanh toán, hủy/hoàn tiền, báo cáo, AI nâng cao hoạt động đúng AC.
