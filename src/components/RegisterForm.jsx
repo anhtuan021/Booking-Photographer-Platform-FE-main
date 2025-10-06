@@ -59,7 +59,7 @@ export default function RegisterForm() {
       }
       if (role == "PHOTOGRAPHER")
         return router.push(
-          "https://localhost:5000/admin/login?id=" +
+          "https://localhost:3001/login" +
             data?.responseData?.user?.id
         );
       else router.push("/auth/login");
