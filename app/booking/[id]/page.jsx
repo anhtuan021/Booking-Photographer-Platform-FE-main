@@ -281,9 +281,12 @@ export default function BookingPage({ params }) {
       });
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(
-          data?.responseStatus?.responseMessage || "Booking failed!"
-        );
+        if (res.status === 409) {
+          setFormError("Photographer is already booked at this time.");
+        } else {
+          setFormError(data?.responseStatus?.responseMessage || "Booking failed!");
+        }
+        return;
       }
       // Nếu thành công, chuyển sang bước xác nhận
       const data = await res.json();
@@ -464,11 +467,10 @@ export default function BookingPage({ params }) {
                                     }
                                   >
                                     <div
-                                      className={`service-item${
-                                        isServiceSelected(service.code)
+                                      className={`service-item${isServiceSelected(service.code)
                                           ? " active"
                                           : ""
-                                      }`}
+                                        }`}
                                     >
                                       <input
                                         className="form-check-input ms-0 mt-0"
@@ -581,8 +583,8 @@ export default function BookingPage({ params }) {
                                     <h4 className="mb-1">
                                       {photographer?.businessName ||
                                         photographer?.firstName +
-                                          " " +
-                                          photographer?.lastName ||
+                                        " " +
+                                        photographer?.lastName ||
                                         "Unknown Photographer"}
                                       <span className="badge bg-orange fs-12">
                                         <i className="fa-solid fa-star me-1"></i>
@@ -800,8 +802,8 @@ export default function BookingPage({ params }) {
                                     <h4 className="mb-1">
                                       {photographer?.businessName ||
                                         photographer?.firstName +
-                                          " " +
-                                          photographer?.lastName ||
+                                        " " +
+                                        photographer?.lastName ||
                                         "Unknown Photographer"}
                                       <span className="badge bg-orange fs-12">
                                         <i className="fa-solid fa-star me-1"></i>
@@ -991,8 +993,8 @@ export default function BookingPage({ params }) {
                                     <h4 className="mb-1">
                                       {photographer?.businessName ||
                                         photographer?.lastName +
-                                          " " +
-                                          photographer?.firstName ||
+                                        " " +
+                                        photographer?.firstName ||
                                         "Unknown Photographer"}
                                       <span className="badge bg-orange fs-12">
                                         <i className="fa-solid fa-star me-1"></i>
@@ -1265,19 +1267,19 @@ export default function BookingPage({ params }) {
                                           <div className="form-plain-text">
                                             {selectedServices.length > 0
                                               ? selectedServices
-                                                  .map(
-                                                    (code) =>
-                                                      (
-                                                        serviceDetails.find(
-                                                          (s) => s.code === code
-                                                        ) ||
-                                                        SPECIALITY_SERVICES.find(
-                                                          (s) => s.code === code
-                                                        )
-                                                      )?.name
-                                                  )
-                                                  .filter(Boolean)
-                                                  .join(", ")
+                                                .map(
+                                                  (code) =>
+                                                    (
+                                                      serviceDetails.find(
+                                                        (s) => s.code === code
+                                                      ) ||
+                                                      SPECIALITY_SERVICES.find(
+                                                        (s) => s.code === code
+                                                      )
+                                                    )?.name
+                                                )
+                                                .filter(Boolean)
+                                                .join(", ")
                                               : "-"}
                                           </div>
                                         </div>
