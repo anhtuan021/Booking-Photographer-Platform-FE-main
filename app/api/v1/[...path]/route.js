@@ -12,8 +12,8 @@ export function OPTIONS(req) {
 import { NextResponse } from "next/server";
 
 const BACKEND =
-  process.env.NEXT_PUBLIC_API_BASE ||
-  "http://localhost:5000";
+  process.env.NEXT_PUBLIC_API_BASE
+;
 
 async function proxy(req) {
   try {
