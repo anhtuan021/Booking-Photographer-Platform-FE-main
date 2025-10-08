@@ -10,7 +10,7 @@ export default function middleware(request: NextRequest) {
   
   // Define allowed origins dynamically
   const allowedOrigins = process.env.NODE_ENV === 'production' 
-    ? ['http://localhost:5000']
+    ? ['http://booking-photographer-be-env.eba-m2s9pkpj.ap-southeast-2.elasticbeanstalk.com']
     : ['http://localhost:3000', 'http://localhost:3001'];
   
   const isAllowedOrigin = origin && allowedOrigins.includes(origin);

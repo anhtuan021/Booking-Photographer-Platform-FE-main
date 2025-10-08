@@ -3,7 +3,7 @@
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "http://booking-photographer-platform-ap-env.eba-3nsmrptz.ap-southeast-2.elasticbeanstalk.com" },
+        { "key": "Access-Control-Allow-Origin", "value": "http://booking-photographer-be-env.eba-m2s9pkpj.ap-southeast-2.elasticbeanstalk.com" },
         { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" },
         { "key": "Access-Control-Allow-Credentials", "value": "true" }

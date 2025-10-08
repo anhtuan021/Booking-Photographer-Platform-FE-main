@@ -26,6 +26,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@types/node": "^24.7.0",
     "eslint": "^8.50.0",
     "eslint-plugin-react": "^7.33.2"
   }
