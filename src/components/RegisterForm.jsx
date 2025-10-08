@@ -59,7 +59,7 @@ export default function RegisterForm() {
       }
       if (role == "PHOTOGRAPHER")
         return router.push(
-          "https://localhost:3001/login" +
+          "https://booking-admin-ruddy-phi.vercel.app/login?id=" +
             data?.responseData?.user?.id
         );
       else router.push("/auth/login");
