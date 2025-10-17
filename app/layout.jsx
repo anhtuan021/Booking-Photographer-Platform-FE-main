@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <head>
         <link
           rel="shortcut icon"
-          href="/theme/admin/assets/img/favicon.png"
+          href="/theme/admin/assets/img/logo-2.jpg"
           type="image/x-icon"
         />
         {/* Theme CSS (served from public/theme) */}
