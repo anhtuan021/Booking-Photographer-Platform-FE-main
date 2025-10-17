@@ -60,24 +60,30 @@ export default function Header() {
                   <span></span>
                 </span>
               </a>
-              <Link href="/" className="navbar-brand logo">
+              <Link href="/" className="menu-logo" style={{ display: "flex", alignItems: "center" }}>
                 <img
-                  src="/theme/assets/img/logo-1.png"
+                  src="/theme/assets/img/logo-2.jpg"
                   className="img-fluid"
                   alt="Logo"
+                  style={{ height: "50px", width: "auto", marginRight: "10px" }}
                 />
+                <span style={{ fontWeight: "bold", fontSize: "18px", color: "black" }}>BOOKSNAP</span>
               </Link>
+
             </div>
             <div className="header-menu">
               <div className="main-menu-wrapper">
                 <div className="menu-header">
-                  <Link href="/" className="menu-logo">
+                  <Link href="/" className="menu-logo" style={{ display: "flex", alignItems: "center" }}>
                     <img
-                      src="/theme/assets/img/logo-1.png"
+                      src="/theme/assets/img/logo-2.jpg"
                       className="img-fluid"
                       alt="Logo"
+                      style={{ height: "50px", width: "auto", marginRight: "10px" }}
                     />
+                    <span style={{ fontWeight: "bold", fontSize: "18px", color: "black" }}>BOOKSNAP</span>
                   </Link>
+
                   <a id="menu_close" className="menu-close" href="#menu">
                     <i className="fas fa-times"></i>
                   </a>
