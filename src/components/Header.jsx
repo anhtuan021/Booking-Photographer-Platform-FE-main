@@ -136,7 +136,6 @@ export default function Header() {
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/search">Photographers</Link></li>
                 <li><Link href="/gallery">Portfolios</Link></li>
-                <li><Link href="/">Contact Us</Link></li>
 
                 {/* ✅ Menu mobile riêng */}
                 {!isLoading && (
